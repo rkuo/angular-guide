@@ -1,15 +1,20 @@
 <!-- 
-0 init setup
+step-0-init setup
   - start a basic HTML Hello World template, title and paragraph. No angularjs yet.
   - refer http://docs.angularjs.org/guide/concepts for note
+step-1-startup
+	- add ng-app to html tag to set boundary of angularjs
+	- add reference to angularjs script library in head tag
+	- add ng-init in paragraph to initialize some expressions, in here, we set name variable with value 'World'
 -->
 
 <!doctype html>
-<html>
+<html ng-app>
 	<head>
 		<title>The basic HTML starting point</title>
+		<script src="http://code.angularjs.org/1.2.0rc1/angular.min.js"></script>
 	</head>
 <body>
-	<p>Hello World!</p>
+	<p ng-init = " name='World' ">Hello {{name}}!</p>
 </body>
 </html>
