@@ -6,18 +6,29 @@ step-1-startup
 	- add ng-app to html tag to set boundary of angularjs
 	- add reference to angularjs script library in head tag
 	- add ng-init in paragraph to initialize some expressions, in here, we set name variable with value 'World'
-step-2-runtime
+step-2-runtime 
 	- use the value from input tag as ng-model, the value is called "name"
 	- part of the p-tag value "name" is linked to the ng-model. It observes/syncs the model. 
+step-3-scope: Because the different scope, same variable name may have different values.
+	- we added a js file called script.js, which defines two controllers.
+	- we have ng-controller="GreetCtrl" in one <div>, and ng-controller="ListCtrl" in the other <div>, they are different scopes. The variable "name" refers to diiferent values.
+	- To make display/view more specific for different scopes, we use red color border for different scopes.
 -->
 
 <!doctype html>
 <html ng-app>
 	<head>
 		<script src="http://code.angularjs.org/1.2.0rc1/angular.min.js"></script>
+		<script src="scripts.js"></script>
 	</head>
-<body>
-	<input ng-model="name">
-	<p> Hello {{name}}!</p>
-</body>
+	<body>
+		<div ng-controller="GreetCtrl">
+			Hello {{name}}!
+		</div>
+		<div ng-controller="ListCtrl">
+			<ol>
+				<li ng-repea="name in names">{{name}}</li>
+			</ol>		
+		</div>
+	</body>
 </html>
