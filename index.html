@@ -13,6 +13,10 @@ step-3-scope: Because the different scope, same variable name may have different
 	- we added a js file called script.js, which defines two controllers.
 	- we have ng-controller="GreetCtrl" in one <div>, and ng-controller="ListCtrl" in the other <div>, they are different scopes. The variable "name" refers to diiferent values.
 	- To make display/view more specific for different scopes, we use red color border for different scopes.
+step-4-controller
+	- A controller construct model and publish it to view along with callback methods. 
+	- The view is a projection of the scope onto the template. In the later part of guide, it [defines scope](http://docs.angularjs.org/guide/scope) "scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure which mimic the DOM structure of the application. Scopes can watch expressions and propagate events." scope is defined in js.
+	- HTML sets up the template of webpage, Controller provides the value and behavior of the elements. Scope provides the context.
 -->
 
 <!doctype html>
@@ -22,13 +26,11 @@ step-3-scope: Because the different scope, same variable name may have different
 		<script src="scripts.js"></script>
 	</head>
 	<body>
-		<div ng-controller="GreetCtrl">
+		<div ng-controller="MyCtrl">
 			Hello {{name}}!
-		</div>
-		<div ng-controller="ListCtrl">
-			<ol>
-				<li ng-repea="name in names">{{name}}</li>
-			</ol>		
+			<button ng-click="action()">
+				OK
+			</button>
 		</div>
 	</body>
 </html>

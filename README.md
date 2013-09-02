@@ -17,9 +17,15 @@ We will periodically create a branch for jumping back for experiment.
   - copy all code into HTML panel of jsFiddle, and run it, works, git add, commit and give a branch name.
 
 ## step-2-runtime
-  - [copy from Angular doc](http://docs.angularjs.org/guide/concepts), reformated here for ease reading. The short code here is trying to show how model and view keep in sync:
-	- use the value from input tag as ng-model, the value is called "name"
-	- part of the p-tag value "name" is linked to the ng-model. It observes/syncs the model. 
+
+The short code here is trying to show how model and view keep in sync:
+
+- use the value from input tag as ng-model, the value is called "name"
+- part of the p-tag value "name" is linked to the ng-model. It observes/syncs the model. 
+
+[copy from Angular doc](http://docs.angularjs.org/guide/concepts), reformated here for ease reading. 
+
+=- copy start here -==
 
 The diagram tries to describe how Angular interacts with the browser's event loop. 
 
@@ -57,19 +63,51 @@ This is followed by the browser re-rendering the DOM to reflect any changes. Her
   	5. The $watch list detects a change on the name property and notifies the {{name}} interpolation, which in turn updates the DOM. 
   	6. Angular exits the execution context, which in turn exits the keydown event and with it the JavaScript execution context. 
   	7. The browser re-renders the view with update text.
+  	
+=- copy to here -==  	
+  	
 If the testing in jsFiddle does not run, make sure Angularjs in Framework & Extensions, and No wrap - in <head> are selected.
 
 ## step-3-scope
-Because the different scope, same variable "name" may have different values.
+Because the different scope, same variables called "name" may have different values.
 	- we added a js file called script.js, which defines two scopes.
 	- we have ng-controller="GreetCtrl" in one <div>, and ng-controller="ListCtrl" in the other `<div>`, they are different scopes. which refer to diiferent values.
 	- To make display/view more specific for different scopes, we use red color border for different scopes. This is defined in CSS file.
-- Controller is in js<pre><code>function GreetCtrl($scope) {
-  $scope.name = 'World';
-}
-function ListCtrl($scope) {
-  $scope.names = ['Igor', 'Misko', 'Vojta'];
-}</code></pre> There are 4 names in 2 different scopes.
+- Controller is in js
+
+	function GreetCtrl($scope) {
+		$scope.name = 'World';
+		}
+		
+	function ListCtrl($scope) {
+		$scope.names = ['Igor', 'Misko', 'Vojta'];
+	}
+
+There are 4 names in 2 different scopes.
+
+## step-4-controller
+A controller construct model and publish it to view along with callback methods. The view is a projection of the scope onto the template. In the [later part of guide](http://docs.angularjs.org/guide/scope), it defines scope. "scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure which mimic the DOM structure of the application. Scopes can watch expressions and propagate events." scope is defined in js.
+
+HTML sets up the template of webpage, Controller provides the value and behavior of the elements. Scope provides the context and connects two. There are two different scopes: MyCtrl and action function. 
+
+Controller
+	
+	function MyCtrl($scope) {
+		$scope.action = function() {
+    		$scope.name = 'OK';
+    	}
+    
+    	$scope.name = 'World';
+    }
+
+View
+    
+	<div ng-controller="MyCtrl">
+      Hello {{name}}!
+      <button ng-click="action()">
+        OK
+      </button>
+    </div>
 
 
 
