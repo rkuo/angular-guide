@@ -20,7 +20,8 @@ step-4-controller
 step-5-model
 	- There is no code change in document. Model is data, which can merge with HTML to create view. 
 step-6-view
-	- 
+	- angularjs's directives provide links to controllers, which have scope (data-model) for different values for different keys. 
+	- view observes the model. In this example, data-model is created via ng-init.
 
 -->
 
@@ -28,14 +29,17 @@ step-6-view
 <html ng-app>
 	<head>
 		<script src="http://code.angularjs.org/1.2.0rc1/angular.min.js"></script>
-		<script src="script.js"></script>
 	</head>
 	<body>
-		<div ng-controller="MyCtrl">
-			Hello {{name}}!
-			<button ng-click="action()">
-				OK
-			</button>
+		<div ng-init="list = ['Chrome', 'Safari', 'Firefox', 'IE']">
+			<input ng-model="list" ng-list><br> 
+			<input ng-model="list" ng-list><br> 
+			<pre>list={{list}}</pre><br>
+			<ol>
+				<li ng-repeat="item in list">
+					{{item}}
+				</li>
+			</ol>			
 		</div>
 	</body>
 </html>

@@ -5,9 +5,8 @@ This is a study notes for angularJS. This notes follow the [angularjs guide](htt
 ## Tools
 
 - make sure there is angularjs plugin for editor.
-- open jsFiddle or similar online playground for testing.
 
-We will periodically create branches for jumping back to certain spot for experiment more.
+You can edit the code and try it out in plunker or jsFiddle. Even though, concepts are un-related, I will periodically create branches for jumping back to certain spot for experiment more.
  
 ## step-0-init setup
 
@@ -18,7 +17,10 @@ We will periodically create branches for jumping back to certain spot for experi
   - add ng-app to html tag to indicate angularJS context and set boundary of angularjs.
   - add reference to angularjs script library in `<head>`.
   - add ng-init in paragraph to initialize some expressions, in here, we set name equal 'World' [see doc for more details](http://docs.angularjs.org/api/ng.directive:ngInit)
-  - copy all code into HTML panel of jsFiddle, and run it, works, git add, commit and give a branch name.
+  
+=>>insert startup picture here
+    
+  - copy all code into HTML panel of jsFiddle, and run it, works, git add, commit and give a branch name. This can be done many different ways, we will set it properly later.
 
 ## step-2-runtime
 
@@ -28,6 +30,8 @@ The short code here is trying to show how model and view keep in sync:
 - part of the p-tag value "name" is linked to the ng-model. It observes/syncs with the model. 
 
 [copy from Angular doc](http://docs.angularjs.org/guide/concepts), reformated here for ease reading. 
+
+=>>insert runtime picture here 
 
 =- copy start here -==
     	
@@ -46,7 +50,7 @@ Here is the explanation of how the Hello world example achieves the data-binding
   	6. Angular exits the execution context, which in turn exits the keydown event and with it the JavaScript execution context. 
   	7. The browser re-renders the view with update text.
   	
-=- copy to here -==  	
+=- copy up to here -== 	
   	
 If the testing in jsFiddle does not run, make sure "Angularjs", and "No wrap - in <head>" in Framework & Extensions are selected.
 
@@ -58,7 +62,7 @@ Because the different scope, same variables called "name" may have different val
 - we have ng-controller="GreetCtrl" in one `<div>`, and ng-controller="ListCtrl" in the other `<div>`, they are different scopes, which refer to diiferent values.
 - To make display/view more specific for different scopes, it uses red color border for different scopes. This is defined in CSS file.
 
-Controller is in js
+Controller describes in js.
 
 	function GreetCtrl($scope) {
 		$scope.name = 'World';
@@ -71,7 +75,9 @@ There are 4 names in 2 different scopes.
 
 ## step-4-controller
 
-A controller construct model and publish it to view along with callback methods. The view is a projection of the scope onto the template. In the [later part of guide](http://docs.angularjs.org/guide/scope), it defines scope. "scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure which mimic the DOM structure of the application. Scopes can watch expressions and propagate events." Scope is defined in js.
+A controller construct model and publish it to view along with callback methods. The view is a projection of the scope onto the template. In the [later part of guide](http://docs.angularjs.org/guide/scope), it defines scope: "scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure which mimic the DOM structure of the application. Scopes can watch expressions and propagate events." Scope is defined in js.
+
+=>>insert controller picture here
 
 HTML sets up the template of webpage, Controller provides the value and behavior of the elements. Scope provides the context and connects View and Controller. There are two different scopes: MyCtrl and action. 
 
@@ -98,10 +104,14 @@ Tested in Chrome, works.
 
 ## step-5-model
 
-There is no code change in document. Model is data, which can merge with HTML to create view. 
+Scope is a data-model, which can merge with HTML to create view. With different scopes, view can connect to different part of data-model.
+
+=>>insert model picture here
 
 ## step-6-view
 
+Angular extends HTML by adding some angularjs-directives, like an attributes to an element. The browser parses the HTML into the DOM with all these new "attributes", which becomes the input for angularjs's compiler. The compiler looks for specified-directives to set up watches on the specified model. With event model described above, the view will continue to observe/sync with the model.
 
+=>>insert half size view picture here
 
 
