@@ -1,6 +1,6 @@
-# Learning AngularJS fromt the guide - 1/2
+# Learning AngularJS Concept from the Guide
 
-This is part-1 study notes for angularJS. This is to follow the [angularjs guide](http://docs.angularjs.org/guide/concepts) please refer origin for more details.
+This is the study notes for angularJS. This notes follow the [angularjs guide](http://docs.angularjs.org/guide/concepts) please refer origin for more details.
 
 ## Tools
 
