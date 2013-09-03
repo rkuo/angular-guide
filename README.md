@@ -1,16 +1,20 @@
-# Learning AngularJS for the guide
+# Learning AngularJS fromt the guide - 1/2
+
+This is part-1 study notes for angularJS. This is to follow the [angularjs guide](http://docs.angularjs.org/guide/concepts) please refer origin for more details.
 
 ## Tools
+
 - make sure there is angularjs plugin for editor.
 - open jsFiddle or similar online playground for testing.
 
-We will periodically create a branch for jumping back for experiment.
+We will periodically create branches for jumping back for experiment.
  
 ## step-0-init setup
+
   - start a basic HTML Hello World template, title and paragraph. No angularjs yet.
-  - refer http://docs.angularjs.org/guide/concepts for note
 
 ## step-1-startup
+
   - add ng-app to html tag to set boundary of angularjs
   - add reference to angularjs script library in head tag
   - add ng-init in paragraph to initialize some expressions, in here, we set name variable with value 'World' [see doc for more details](http://docs.angularjs.org/api/ng.directive:ngInit)
@@ -69,16 +73,18 @@ This is followed by the browser re-rendering the DOM to reflect any changes. Her
 If the testing in jsFiddle does not run, make sure Angularjs in Framework & Extensions, and No wrap - in <head> are selected.
 
 ## step-3-scope
+
 Because the different scope, same variables called "name" may have different values.
-	- we added a js file called script.js, which defines two scopes.
-	- we have ng-controller="GreetCtrl" in one <div>, and ng-controller="ListCtrl" in the other `<div>`, they are different scopes. which refer to diiferent values.
-	- To make display/view more specific for different scopes, we use red color border for different scopes. This is defined in CSS file.
-- Controller is in js
+
+- we added a js file called script.js, which defines two scopes.
+- we have ng-controller="GreetCtrl" in one <div>, and ng-controller="ListCtrl" in the other `<div>`, they are different scopes, which refer to diiferent values.
+- To make display/view more specific for different scopes, we use red color border for different scopes. This is defined in CSS file.
+
+Controller is in js
 
 	function GreetCtrl($scope) {
 		$scope.name = 'World';
-		}
-		
+		}	
 	function ListCtrl($scope) {
 		$scope.names = ['Igor', 'Misko', 'Vojta'];
 	}
@@ -86,6 +92,7 @@ Because the different scope, same variables called "name" may have different val
 There are 4 names in 2 different scopes.
 
 ## step-4-controller
+
 A controller construct model and publish it to view along with callback methods. The view is a projection of the scope onto the template. In the [later part of guide](http://docs.angularjs.org/guide/scope), it defines scope. "scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure which mimic the DOM structure of the application. Scopes can watch expressions and propagate events." scope is defined in js.
 
 HTML sets up the template of webpage, Controller provides the value and behavior of the elements. Scope provides the context and connects two. There are two different scopes: MyCtrl and action function. 
@@ -109,6 +116,11 @@ View
       </button>
     </div>
 
+Tested in Chrome, works.
+
+## step-5-model
+
+There is no code change in document. Model is data, which can merge with HTML to create view. 
 
 
 
